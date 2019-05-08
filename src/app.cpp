@@ -112,65 +112,35 @@ void App::_parseCommandLine( ) {
 void App::_setTheme( ) {
     setStyle( QStyleFactory::create( "Fusion" ) );
 
-
-    if ( g_settings.theme != Theme::Dark ) {
-        return;
-    }
-
-    QPalette darkPalette;
-    darkPalette.setColor(                     QPalette::WindowText,      Qt::white               );
-    darkPalette.setColor(                     QPalette::Button,          QColor(  53,  53,  53 ) );
-    darkPalette.setColor(                     QPalette::Dark,            QColor(  35,  35,  35 ) );
-    darkPalette.setColor(                     QPalette::Text,            Qt::white               );
-    darkPalette.setColor(                     QPalette::BrightText,      Qt::red                 );
-    darkPalette.setColor(                     QPalette::ButtonText,      Qt::white               );
-    darkPalette.setColor(                     QPalette::Base,            QColor(  42,  42,  42 ) );
-    darkPalette.setColor(                     QPalette::Window,          QColor(  53,  53,  53 ) );
-    darkPalette.setColor(                     QPalette::Shadow,          QColor(  20,  20,  20 ) );
-    darkPalette.setColor(                     QPalette::Highlight,       QColor(  42, 130, 218 ) );
-    darkPalette.setColor(                     QPalette::HighlightedText, Qt::white               );
-    darkPalette.setColor(                     QPalette::Link,            Qt::white               );
-    darkPalette.setColor(                     QPalette::AlternateBase,   QColor(  66,  66,  66 ) );
-    darkPalette.setColor(                     QPalette::ToolTipBase,     Qt::white               );
-    darkPalette.setColor(                     QPalette::ToolTipText,     Qt::white               );
-
-    darkPalette.setColor( QPalette::Disabled, QPalette::WindowText,      QColor( 127, 127, 127 ) );
-    darkPalette.setColor( QPalette::Disabled, QPalette::Text,            QColor( 127, 127, 127 ) );
-    darkPalette.setColor( QPalette::Disabled, QPalette::ButtonText,      QColor( 127, 127, 127 ) );
-    darkPalette.setColor( QPalette::Disabled, QPalette::Highlight,       QColor(  80,  80,  80 ) );
-    darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, QColor( 127, 127, 127 ) );
-
-//    setPalette( darkPalette );
-
-
     struct Color { QPalette::ColorGroup group; QPalette::ColorRole role; QColor color; };
+
+    const QColor mainColor = QColor( 220, 220, 220 );
+    const QColor textColor = QColor::fromRgb(0x454646);
+    const QColor disabledTextColor = QColor::fromRgba(0xc0454646);
 
     const Color Colors[] = {
         { QPalette::All, QPalette::AlternateBase, QColor::fromRgb(0xf4f4f4) },
         { QPalette::All, QPalette::BrightText, QColor::fromRgb(0xffffff) },
-        { QPalette::All, QPalette::Button, QColor::fromRgb(0xb2b2b2) },
-//        { QPalette::All, QPalette::Button, Qt::white },
-        { QPalette::All, QPalette::ButtonText, QColor::fromRgb(0x454646) }, // 0x393a3d
-        { QPalette::Disabled, QPalette::ButtonText, QColor::fromRgba(0xc0454646) },
+        { QPalette::All, QPalette::Button, mainColor },
+        { QPalette::All, QPalette::ButtonText, textColor },
+        { QPalette::Disabled, QPalette::ButtonText, disabledTextColor },
         { QPalette::All, QPalette::Dark, QColor::fromRgb(0x696a6b) },
         { QPalette::All, QPalette::HighlightedText, QColor::fromRgb(0xffffff) },
         { QPalette::Disabled, QPalette::HighlightedText, QColor::fromRgba(0xc0ffffff) },
         { QPalette::All, QPalette::Light, QColor::fromRgb(0xdedfe0) },
         { QPalette::All, QPalette::Mid, QColor::fromRgb(0x9e9e9f) },
         { QPalette::All, QPalette::Midlight, QColor::fromRgb(0xcecfd0) },
-        { QPalette::All, QPalette::Text, QColor::fromRgb(0x454646) },
-        { QPalette::Disabled, QPalette::Text, QColor::fromRgba(0xc0454646) },
+        { QPalette::All, QPalette::Text, textColor },
+        { QPalette::Disabled, QPalette::Text, disabledTextColor },
         { QPalette::All, QPalette::ToolTipBase, QColor::fromRgba(0xc0000000) },
         { QPalette::All, QPalette::ToolTipText, QColor::fromRgb(0xffffff) },
-        { QPalette::Disabled, QPalette::ToolTipText, QColor::fromRgba(0xc0454646) },
-        { QPalette::All, QPalette::Window, QColor::fromRgb(0xe2e5e7) },
-//        { QPalette::All, QPalette::Window, Qt::white },
-        { QPalette::All, QPalette::WindowText, QColor::fromRgb(0x454646) },
-        { QPalette::All, QPalette::Base, QColor::fromRgb(0xffffff)},
-//        { QPalette::All, QPalette::Base, Qt::white},
+        { QPalette::Disabled, QPalette::ToolTipText, disabledTextColor },
+        { QPalette::All, QPalette::Window, mainColor },
+        { QPalette::All, QPalette::WindowText, textColor },
+        { QPalette::All, QPalette::Base, mainColor},
         { QPalette::All, QPalette::Highlight, QColor::fromRgb(0x19bf79)},
-        { QPalette::All, QPalette::Link, QColor::fromRgb(0x0075b1)},
-        { QPalette::All, QPalette::LinkVisited, QColor::fromRgb(0x7fbad8)}
+        { QPalette::All, QPalette::Link, QColor( 80, 80, 80)},
+        { QPalette::All, QPalette::LinkVisited, QColor( 80, 80, 80)}
     };
 
     QPalette cellinkPalette;
