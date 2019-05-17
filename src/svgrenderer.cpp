@@ -116,15 +116,15 @@ void SvgRenderer::_renderLayer( ) {
     debug( "+ SvgRenderer::_renderLayer: _currentLayer: %d; PNG size: %d×%d\n", _currentLayer, _pxWidth, _pxHeight );
     _processRunner->setProcessChannelMode( QProcess::ForwardedChannels );
     _processRunner->start(
-        QString     { "gm" },
-        QStringList {
-            QString( "convert"     ),
-            QString( "-antialias"  ),
-            QString( "-density"    ), QString( "400" ),
-            QString( "-size"       ), QString( "%1x%2" ).arg( _pxWidth ).arg( _pxHeight ),
-            QString( "-background" ), QString( "#000000" ),
-            QString( "%1/%2.svg"   ).arg( _outputDirectory ).arg( _currentLayer, 6, 10, DigitZero ),
-            QString( "%1/%2.png"   ).arg( _outputDirectory ).arg( _currentLayer, 6, 10, DigitZero )
+        { "gm" },
+        {
+            "convert",
+            "-antialias",
+            "-density",    "400",
+            "-background", "#000000",
+            "-size",       QString( "%1x%2" ).arg( _pxWidth ).arg( _pxHeight ),
+            QString( "%1/%2.svg" ).arg( _outputDirectory ).arg( _currentLayer, 6, 10, DigitZero ),
+            QString( "%1/%2.png" ).arg( _outputDirectory ).arg( _currentLayer, 6, 10, DigitZero )
         }
     );
 }

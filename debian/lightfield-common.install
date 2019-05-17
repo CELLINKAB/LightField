@@ -1,9 +1,11 @@
 files/etc/sudoers.d/*                                          etc/sudoers.d
+files/etc/xdg/autostart/*                                      etc/xdg/autostart
 files/lib/udev/rules.d/*                                       lib/udev/rules.d
 files/usr/share/lightfield/libexec/printrun/*                  usr/share/lightfield/libexec/printrun
 files/usr/share/lightfield/libexec/stdio-shepherd/*            usr/share/lightfield/libexec/stdio-shepherd
 files/usr/share/lightfield/libexec/upgrade-lightfield-software usr/share/lightfield/libexec
 files/usr/share/lightfield/libexec/reset-lumen-arduino-port    usr/share/lightfield/libexec
+files/usr/share/X11/xorg.conf.d/99-waveshare.conf              usr/share/X11/xorg.conf.d
 files/var/cache/lightfield/*                                   var/cache/lightfield
 files/var/lib/lightfield/*                                     var/lib/lightfield
 files/var/log/lightfield                                       var/log

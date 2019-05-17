@@ -1,5 +1,11 @@
 #!/bin/bash
 
+set -e
+
+function blue-bar () {
+    echo -e "\r\x1B[1;37;44m$*\x1B[K\x1B[0m" 1>&2
+}
+
 function unsymlink () {
 	if [ -h "$1" ]
 	then
@@ -13,7 +19,6 @@ function maybe-mkdir () {
 	then
 		echo Creating directory "$1"
 		mkdir "$1"
-		chown lumen:lumen "$1"
 	fi
 }
 
@@ -26,8 +31,7 @@ function unsymlink-and-maybe-mkdir () {
 ## /usr/share/lightfield/libexec
 ##
 
-unsymlink-and-maybe-mkdir /usr/share/lightfield
-unsymlink-and-maybe-mkdir /usr/share/lightfield/libexec
+rm -drv /usr/share/lightfield
 
 ##
 ## /var/cache/lightfield/print-jobs
@@ -67,6 +71,8 @@ then
     mv "${symlink}"/* /var/lib/lightfield/model-library/
 fi
 
+mkdir /var/lib/lightfield/software-updates
+
 ##
 ## /var/log/lightfield
 ##
@@ -84,3 +90,11 @@ then
     echo Relocating debugging logs from "${symlink}" to /var/log/lightfield
     mv "${symlink}"/* /var/log/lightfield/
 fi
+
+##
+## Permissions
+##
+
+chown -R lumen:lumen /var/cache/lightfield /var/lib/lightfield /var/log/lightfield
+
+[ -f /home/lumen/.bashrc ] && mv /home/lumen/.bashrc /home/lumen/.real_bash_profile

@@ -1,0 +1,40 @@
+As part of my efforts to package LightField, it has been necessary to relocate... well,
+nearly everything in order to integrate it into the system properly.
+
+Old Directory                                       New Directory
+/home/lumen/Volumetric/model-library/               /var/lib/lightfield/model-library/
+/home/lumen/Volumetric/working/                     /var/cache/lightfield/print-jobs/
+/home/lumen/Volumetric/debug/                       /var/log/lightfield/
+/home/lumen/Volumetric/LightField/stdio-shepherd/   /usr/share/lightfield/libexec/stdio-shepherd/
+/home/lumen/Volumetric/printrun/                    /usr/share/lightfield/libexec/printrun/
+
+To upgrade a Lumen X printer to the "new way" of doing things, I have written two scripts.
+
+At the moment I can't get setpower--now known as set-projector-power to avoid any potential
+name clashes--to build on Ubuntu, either on my printer or in my Ubuntu VM, so it will be
+necessary to reuse the existing setpower binary for the meantime.
+
+Both of the scripts MUST be run with sudo, or they will fail horribly, although they won't
+mess anything up.
+
+The first script is PrepareSystem, which undoes any symlinks from the new directories above
+into /home/lumen/Volumetric, then moves any models, debug logs, and cached print jobs into
+their new homes.
+
+The second script is install-lightfield, which will build the debugging version of LightField,
+install it, then reconfigure the system to automatically start X and LightField--without
+GNOME--on tty1 at startup.
+
+To start GNOME, after the system has been reconfigured:
+* Press Ctrl+Alt+F2 to switch to tty2.
+* Log in as user lumen.
+* Run these two commands:
+  * systemctl stop getty@tty1.service
+    * startx
+	* After exiting GNOME, run this command to return things to (the new) normal:
+	  * systemctl start getty@tty1.service
+
+	  To look at the debugging log:
+	  * Press Ctrl+Alt+F2 to switch to tty2.
+	  * Log in as user lumen.
+	  * Change to directory /var/log/debug, the debugging logs' new home. 

@@ -166,6 +166,7 @@ App::App( int& argc, char* argv[] ): QApplication( argc, argv ) {
     QFontDatabase::addApplicationFont(":/Raleway/Raleway/Raleway-Regular.ttf");
     QGuiApplication::setFont(ModifyFont( QGuiApplication::font( ), "Raleway" ));
 
+    debug( "+ App::`ctor: running setpower\n" );
     QProcess::startDetached( SetpowerCommand, { "0" } );
 
     _parseCommandLine( );

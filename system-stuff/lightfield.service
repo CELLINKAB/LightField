@@ -11,8 +11,8 @@ RequiresMountsFor=/usr
 Type=oneshot
 RemainAfterExit=yes
 User=root
-ExecStart=/usr/bin/setpower 0
-ExecStop=/usr/bin/setpower 0
+ExecStart=/usr/bin/set-projector-power 0
+ExecStop=/usr/bin/set-projector-power 0
 Restart=no
 
 [Install]

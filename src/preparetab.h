@@ -75,6 +75,8 @@ private:
     void _setSliceControlsEnabled( bool const enabled );
     void _updatePrepareButtonState( );
 
+    void _handlePrepareFailed( );
+
 signals:
 
     void slicingNeeded( bool const needed );

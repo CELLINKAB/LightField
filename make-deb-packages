@@ -38,11 +38,13 @@ mkdir ${VERBOSE} -p ${LIGHTFIELD_FILES}/var/log/lightfield
 blue-bar • Installing system files
 cd ${LIGHTFIELD_SRC}
 install ${VERBOSE} -Dt ${LIGHTFIELD_FILES}/etc/sudoers.d/                               -m 644 system-stuff/lumen-lightfield
+install ${VERBOSE} -Dt ${LIGHTFIELD_FILES}/etc/xdg/autostart/                           -m 644 system-stuff/com.volumetricbio.LumenX.LightField.desktop
 install ${VERBOSE} -Dt ${LIGHTFIELD_FILES}/lib/systemd/system/                          -m 644 system-stuff/lightfield.service
 install ${VERBOSE} -Dt ${LIGHTFIELD_FILES}/lib/udev/rules.d/                            -m 644 usb-driver/90-dlpc350.rules
 install ${VERBOSE} -Dt ${LIGHTFIELD_FILES}/usr/share/lightfield/libexec/                -m 755 system-stuff/reset-lumen-arduino-port system-stuff/upgrade-lightfield-software system-stuff/upgrade-lumenx-firmware
 install ${VERBOSE} -Dt ${LIGHTFIELD_FILES}/usr/share/lightfield/libexec/stdio-shepherd/ -m 644 stdio-shepherd/printer.py
 install ${VERBOSE} -Dt ${LIGHTFIELD_FILES}/usr/share/lightfield/libexec/stdio-shepherd/ -m 755 stdio-shepherd/stdio-shepherd.py
+install ${VERBOSE} -Dt ${LIGHTFIELD_FILES}/usr/share/X11/xorg.conf.d/                   -m 644 system-stuff/99-waveshare.conf
 
 blue-bar • Copying Debian packaging files
 cp ${VERBOSE} -ar ${LIGHTFIELD_SRC}/debian ${LIGHTFIELD_PACKAGE}/

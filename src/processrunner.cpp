@@ -51,6 +51,7 @@ ProcessRunner::~ProcessRunner( ) {
 }
 
 void ProcessRunner::start( QString const& program, QStringList const& arguments, QProcess::OpenMode const mode ) {
+    debug( "+ ProcessRunner[%d]::start: program '%s', arguments '%s'\n", _instanceId, program.toUtf8( ).data( ), arguments.join( Space ).toUtf8( ).data( ) );
     _process.start( program, arguments, mode );
 }
 

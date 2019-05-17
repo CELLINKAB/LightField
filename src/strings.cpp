@@ -103,6 +103,13 @@ namespace {
         "Usb",
     };
 
+    void _BreakDownTime( uint64_t totalSeconds, int& days, int& hours, int& minutes, int& seconds ) {
+        seconds = totalSeconds % 60; totalSeconds /= 60;
+        minutes = totalSeconds % 60; totalSeconds /= 60;
+        hours   = totalSeconds % 24;
+        days    = totalSeconds / 24;
+    }
+
 }
 
 char const* ToString( QProcess::ProcessError const value ) {
@@ -298,17 +305,37 @@ QString FormatDouble( double const value, int const fieldWidth, int const precis
     return str;
 }
 
-QString GroupDigits( QString const& input, char const groupSeparator ) {
-    QString str { input };
+QString GroupDigits( QString const& input, char const groupSeparator_, char const decimalSeparator ) {
+    QChar   groupSeparator { groupSeparator_ };
+    QString str            { input           };
 
-    int index = str.indexOf( QChar( '.' ) );
+    int index = str.indexOf( QChar { decimalSeparator } );
     if ( -1 == index ) {
         index = str.length( );
     }
 
     while ( index - 3 > 0 ) {
         index -= 3;
-        str.insert( index, QChar( ',' ) );
+        str.insert( index, groupSeparator );
     }
     return str;
+}
+
+QString TimeDeltaToString( double delta ) {
+    int days, hours, minutes, seconds;
+    _BreakDownTime( delta + 0.5, days, hours, minutes, seconds );
+
+    QString timeString { };
+    if ( days > 0 ) {
+        timeString += QString( "%1 d " ).arg( days );
+    }
+    if ( hours > 0 ) {
+        timeString += QString( "%1 h " ).arg( hours );
+    }
+    if ( minutes > 0 ) {
+        timeString += QString( "%1 min " ).arg( minutes );
+    }
+    timeString += QString( "%1 s" ).arg( seconds );
+
+    return timeString;
 }

@@ -37,6 +37,12 @@ QString     ToString( QSizeF                        const value );
 
 QString FormatDouble( double const value, int const fieldWidth = 0, int const precision = -1 );
 
-QString GroupDigits( QString const& input, char const groupSeparator );
+QString GroupDigits( QString const& input, char const groupSeparator, char const decimalSeparator );
+
+inline QString GroupDigits( QString const& input, char const groupSeparator ) {
+    return GroupDigits( input, groupSeparator, '.' );
+}
+
+QString TimeDeltaToString( double delta );
 
 #endif // __STRINGS_H__

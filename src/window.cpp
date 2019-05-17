@@ -362,13 +362,13 @@ void Window::prepareTab_preparePrinterStarted( ) {
 }
 
 void Window::prepareTab_preparePrinterComplete( bool const success ) {
-    debug( "+ Window::prepareTab_preparePrinterComplete\n" );
-    _setPrinterPrepared(
+    debug( "+ Window::prepareTab_preparePrinterComplete: %s; PP? %s MR? %s current tab: %s\n", SucceededString( success ), YesNoString( _isPrinterPrepared ), YesNoString( _isModelRendered ), ToString( _tabWidget->currentIndex( ) ) );
+
 #if defined _DEBUG
-        g_settings.pretendPrinterIsPrepared ? true :
+    _setPrinterPrepared( g_settings.pretendPrinterIsPrepared ? true : success );
+#else
+    _setPrinterPrepared( success );
 #endif // _DEBUG
-        success
-    );
 
     if ( _isModelRendered && _isPrinterPrepared && ( _tabWidget->currentIndex( ) == +TabIndex::Prepare ) ) {
         debug( "+ Window::prepareTab_preparePrinterComplete: switching to Print tab\n" );

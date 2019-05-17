@@ -15,7 +15,7 @@ QString        const MediaRootPath                 { "/media"                   
 QString        const StlModelLibraryPath           { "/var/lib/lightfield/model-library" };
 QString        const JobWorkingDirectoryPath       { "/var/cache/lightfield/print-jobs"  };
 QString        const SlicedSvgFileName             { "sliced.svg"                        };
-QString        const SetpowerCommand               { "setpower"                          };
+QString        const SetpowerCommand               { "set-projector-power"               };
                                                    
 QChar          const Space                         { L' '      };
 QChar          const Slash                         { L'/'      };

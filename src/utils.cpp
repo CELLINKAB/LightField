@@ -119,32 +119,6 @@ double GetBootTimeClock( ) {
     return now.tv_sec + now.tv_nsec / 1'000'000'000.0;
 }
 
-void BreakDownTime( uint64_t totalSeconds, int& days, int& hours, int& minutes, int& seconds ) {
-    seconds = totalSeconds % 60; totalSeconds /= 60;
-    minutes = totalSeconds % 60; totalSeconds /= 60;
-    hours   = totalSeconds % 24;
-    days    = totalSeconds / 24;
-}
-
-QString TimeDeltaToString( double delta ) {
-    int days, hours, minutes, seconds;
-    BreakDownTime( delta + 0.5, days, hours, minutes, seconds );
-
-    QString timeString { };
-    if ( days > 0 ) {
-        timeString += QString( "%1 d " ).arg( days );
-    }
-    if ( hours > 0 ) {
-        timeString += QString( "%1 h " ).arg( hours );
-    }
-    if ( minutes > 0 ) {
-        timeString += QString( "%1 min " ).arg( minutes );
-    }
-    timeString += QString( "%1 s" ).arg( seconds );
-
-    return timeString;
-}
-
 QString ReadWholeFile( QString const& fileName ) {
     QFile file { fileName };
     QString result;
