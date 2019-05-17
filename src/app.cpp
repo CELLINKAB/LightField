@@ -114,18 +114,21 @@ void App::_setTheme( ) {
 
     struct Color { QPalette::ColorGroup group; QPalette::ColorRole role; QColor color; };
 
-    const QColor mainColor = QColor( 220, 220, 220 );
+    const QColor mainColor = QColor::fromRgb(0xDFE1E6);
     const QColor textColor = QColor::fromRgb(0x454646);
     const QColor disabledTextColor = QColor::fromRgba(0xc0454646);
+    const QColor white = QColor::fromRgb(0xffffff);
+    const QColor heroBlue = QColor::fromRgb(0x0A39B7);
 
     const Color Colors[] = {
         { QPalette::All, QPalette::AlternateBase, QColor::fromRgb(0xf4f4f4) },
-        { QPalette::All, QPalette::BrightText, QColor::fromRgb(0xffffff) },
+        { QPalette::All, QPalette::Base, white},
+        { QPalette::All, QPalette::BrightText, white },
         { QPalette::All, QPalette::Button, mainColor },
         { QPalette::All, QPalette::ButtonText, textColor },
         { QPalette::Disabled, QPalette::ButtonText, disabledTextColor },
         { QPalette::All, QPalette::Dark, QColor::fromRgb(0x696a6b) },
-        { QPalette::All, QPalette::HighlightedText, QColor::fromRgb(0xffffff) },
+        { QPalette::All, QPalette::HighlightedText, white },
         { QPalette::Disabled, QPalette::HighlightedText, QColor::fromRgba(0xc0ffffff) },
         { QPalette::All, QPalette::Light, QColor::fromRgb(0xdedfe0) },
         { QPalette::All, QPalette::Mid, QColor::fromRgb(0x9e9e9f) },
@@ -133,12 +136,11 @@ void App::_setTheme( ) {
         { QPalette::All, QPalette::Text, textColor },
         { QPalette::Disabled, QPalette::Text, disabledTextColor },
         { QPalette::All, QPalette::ToolTipBase, QColor::fromRgba(0xc0000000) },
-        { QPalette::All, QPalette::ToolTipText, QColor::fromRgb(0xffffff) },
+        { QPalette::All, QPalette::ToolTipText, white },
         { QPalette::Disabled, QPalette::ToolTipText, disabledTextColor },
         { QPalette::All, QPalette::Window, mainColor },
         { QPalette::All, QPalette::WindowText, textColor },
-        { QPalette::All, QPalette::Base, mainColor},
-        { QPalette::All, QPalette::Highlight, QColor::fromRgb(0x19bf79)},
+        { QPalette::All, QPalette::Highlight, heroBlue},
         { QPalette::All, QPalette::Link, QColor( 80, 80, 80)},
         { QPalette::All, QPalette::LinkVisited, QColor( 80, 80, 80)}
     };
@@ -159,10 +161,10 @@ App::App( int& argc, char* argv[] ): QApplication( argc, argv ) {
     QCoreApplication::setOrganizationDomain( "https://www.volumetricbio.com/" );
     QCoreApplication::setApplicationName( "LightField" );
     QCoreApplication::setApplicationVersion( LIGHTFIELD_VERSION );
-    //QGuiApplication::setFont( ModifyFont( QGuiApplication::font( ), "Montserrat" ) );
 
     QFontDatabase::addApplicationFont(":/Mark Simonson - Proxima Nova.otf");
-    QGuiApplication::setFont(ModifyFont( QGuiApplication::font( ), "Proxima Nova" ));
+    QFontDatabase::addApplicationFont(":/Raleway/Raleway/Raleway-Regular.ttf");
+    QGuiApplication::setFont(ModifyFont( QGuiApplication::font( ), "Raleway" ));
 
     QProcess::startDetached( SetpowerCommand, { "0" } );
 
