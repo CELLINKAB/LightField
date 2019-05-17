@@ -137,7 +137,7 @@ StatusTab::StatusTab( QWidget* parent ): InitialShowEventMixin<StatusTab, TabBas
     _currentLayerImage->setAlignment( Qt::AlignCenter );
     _currentLayerImage->setContentsMargins( { } );
     _currentLayerImage->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
-    _currentLayerImage->setStyleSheet( "QWidget { background: black }" );
+    _currentLayerImage->setStyleSheet( "QWidget { background: white }" );
 
     _currentLayerLayout = WrapWidgetInVBox( _currentLayerImage );
     _currentLayerLayout->setAlignment( Qt::AlignHCenter | Qt::AlignTop );
