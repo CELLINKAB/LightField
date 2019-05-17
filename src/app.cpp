@@ -115,8 +115,8 @@ void App::_setTheme( ) {
     struct Color { QPalette::ColorGroup group; QPalette::ColorRole role; QColor color; };
 
     const QColor mainColor = QColor::fromRgb(0xDFE1E6);
-    const QColor textColor = QColor::fromRgb(0x454646);
-    const QColor disabledTextColor = QColor::fromRgba(0xc0454646);
+    const QColor textColor = QColor::fromRgb(0x5E6C84);
+    const QColor disabledTextColor = QColor::fromRgb(0x97A0AF);
     const QColor white = QColor::fromRgb(0xffffff);
     const QColor heroBlue = QColor::fromRgb(0x0A39B7);
 
