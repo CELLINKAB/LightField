@@ -89,7 +89,7 @@ PrepareTab::PrepareTab( QWidget* parent ): InitialShowEventMixin<PrepareTab, Tab
     _currentLayerImage->setAlignment( Qt::AlignCenter );
     _currentLayerImage->setContentsMargins( { } );
     _currentLayerImage->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
-    _currentLayerImage->setStyleSheet( "QWidget { background: black }" );
+    _currentLayerImage->setStyleSheet( "QWidget { background: white }" );
 
     for ( auto button : { _navigateFirst, _navigatePrevious, _navigateNext, _navigateLast } ) {
         button->setFont( fontAwesome );
