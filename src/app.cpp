@@ -115,7 +115,7 @@ void App::_setTheme( ) {
     struct Color { QPalette::ColorGroup group; QPalette::ColorRole role; QColor color; };
 
     const QColor mainColor = QColor::fromRgb(0xDFE1E6);
-    const QColor textColor = QColor::fromRgb(0x5E6C84);
+    const QColor textColor = QColor::fromRgb(0x091E42);
     const QColor disabledTextColor = QColor::fromRgb(0x97A0AF);
     const QColor white = QColor::fromRgb(0xffffff);
     const QColor heroBlue = QColor::fromRgb(0x0A39B7);
@@ -164,6 +164,7 @@ App::App( int& argc, char* argv[] ): QApplication( argc, argv ) {
 
     QFontDatabase::addApplicationFont(":/Mark Simonson - Proxima Nova.otf");
     QFontDatabase::addApplicationFont(":/Raleway/Raleway/Raleway-Regular.ttf");
+    QFontDatabase::addApplicationFont(":/Lato2OFL/Lato2OFL/Lato-Regular.ttf");
     QGuiApplication::setFont(ModifyFont( QGuiApplication::font( ), "Raleway" ));
 
     debug( "+ App::`ctor: running setpower\n" );

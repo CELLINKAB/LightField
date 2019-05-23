@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>Mark Simonson - Proxima Nova.otf</file>
         <file>Raleway/Raleway/Raleway-Regular.ttf</file>
+        <file>Lato2OFL/Lato2OFL/Lato-Regular.ttf</file>
     </qresource>
 </RCC>
