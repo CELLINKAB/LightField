@@ -18,7 +18,8 @@ MaintenanceTab::MaintenanceTab( QWidget* parent ): InitialShowEventMixin<Mainten
     _logoLabel->setAlignment( Qt::AlignCenter );
     _logoLabel->setContentsMargins( { } );
     _logoLabel->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::MinimumExpanding );
-    _logoLabel->setPixmap( QPixmap { QString { ":images/transparent-dark-logo.png" } } );
+//    _logoLabel->setPixmap( QPixmap { QString { ":images/transparent-dark-logo.png" } } );
+    _logoLabel->setPixmap( QPixmap { QString { ":images/LUMENX@400.png" } } );
 
     _versionLabel->setAlignment( Qt::AlignCenter );
     _versionLabel->setContentsMargins( { } );

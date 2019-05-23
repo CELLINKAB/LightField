@@ -1,8 +1,9 @@
 <RCC>
-    <qresource prefix="images/">
+    <qresource prefix="/images">
         <file>transparent-dark-logo.png</file>
         <file>warning-hot.png</file>
         <file>warning-uv.png</file>
         <file>white-field.png</file>
+        <file>LUMENX@400.png</file>
     </qresource>
 </RCC>
